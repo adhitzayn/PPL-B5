@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"aph-go-service/datastruct"
-	"aph-go-service/logging"
-	"aph-go-service/service"
+	"aph-go-service-master/datastruct"
+	"aph-go-service-master/logging"
+	"aph-go-service-master/service"
 
 	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
