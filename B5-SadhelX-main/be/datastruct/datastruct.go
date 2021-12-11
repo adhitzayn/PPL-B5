@@ -60,4 +60,11 @@ type Response1 struct {
 	
 }
 
+type Response2 struct {
+	Status      string `json:"status"`
+	Message     string `json:"message,omitempty"`
+	ID_produk   int64  `json:"id_produk,omitempty"`
+	
+}
+
 
