@@ -1,3 +1,0 @@
-yarn add @react-navigation/native
-yarn add react-native-screens react-native-safe-area-context(belum tau)
-yarn add react-native-svg
