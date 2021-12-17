@@ -1,4 +1,4 @@
-module github.com/Petagonest/Check-for-Go
+module github.com/adhitzayn/PPL-B5
 
 go 1.17
 

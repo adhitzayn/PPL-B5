@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Petagonest/Check-for-Go/logging"
-	search "github.com/Petagonest/Check-for-Go/service/searching"
+	"github.com/adhitzayn/PPL-B5/logging"
+	search "github.com/adhitzayn/PPL-B5/service/searching"
 	"github.com/julienschmidt/httprouter"
 )
 

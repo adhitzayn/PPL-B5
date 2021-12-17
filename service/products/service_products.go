@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Petagonest/Check-for-Go/datastruct"
-	"github.com/Petagonest/Check-for-Go/logging"
+	"github.com/adhitzayn/PPL-B5/datastruct"
+	"github.com/adhitzayn/PPL-B5/logging"
 )
 
 const (

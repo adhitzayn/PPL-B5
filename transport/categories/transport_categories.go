@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Petagonest/Check-for-Go/datastruct"
-	"github.com/Petagonest/Check-for-Go/logging"
-	"github.com/Petagonest/Check-for-Go/service/categories"
+	"github.com/adhitzayn/PPL-B5/datastruct"
+	"github.com/adhitzayn/PPL-B5/logging"
+	"github.com/adhitzayn/PPL-B5/service/categories"
 	"github.com/julienschmidt/httprouter"
 )
 

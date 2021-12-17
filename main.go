@@ -6,10 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	transport_categories "github.com/Petagonest/Check-for-Go/transport/categories"
-	transport_products "github.com/Petagonest/Check-for-Go/transport/products"
-	// "github.com/Petagonest/Check-for-Go/transport/searching"
-	transport_stores "github.com/Petagonest/Check-for-Go/transport/stores"
+	transport_categories "github.com/adhitzayn/PPL-B5/transport/categories"
+	transport_products "github.com/adhitzayn/PPL-B5/transport/products"
+	transport_stores "github.com/adhitzayn/PPL-B5/transport/stores"
 	"github.com/julienschmidt/httprouter"
 )
 
