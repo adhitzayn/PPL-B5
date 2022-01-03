@@ -3,7 +3,9 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native
 import BackArrow from '../../assets/arrow.svg';
 
 const RegisterBiodata = ({navigation}) => {
-  //
+  const [NamaToko, setNamaToko] = useState("");
+  const [NamaDomain, setNamaDomain] = useState("");
+
   return (
     <View style={styles.background}>
     <TouchableOpacity>
@@ -12,10 +14,10 @@ const RegisterBiodata = ({navigation}) => {
       <Text style={styles.judul}>Masukkan Nama Toko dan Domain</Text>
         <View style={styles.input}>
           <TextInput 
-            mode = {"flat"}
-            label='namatoko'
+            value={NamaToko}
+            onChangeText={setNamaToko}
             style={{ 
-            fontSize: 20,
+              fontSize: 20,
             }}
             placeholder="Apa Nama Tokomu                                  "
           />
@@ -23,8 +25,11 @@ const RegisterBiodata = ({navigation}) => {
       <Text style={styles.reminder}>Nama yang menarik lebih mudah diingat pembeli</Text>
       <Text style={styles.reminder}>Nama yang sudah dipilih tidak dapat diubah</Text>
         <View style={styles.fixToText}>
-          <TextInput style={{ 
-            fontSize: 20,
+          <TextInput 
+            value={NamaDomain}
+            onChangeText={setNamaDomain}
+            style={{ 
+              fontSize: 20,
             }}
             placeholder="Nama Domain                                        "
           />
@@ -32,7 +37,7 @@ const RegisterBiodata = ({navigation}) => {
       <Text style={styles.reminder}>Nama domain berupa ShadleX.com/store/...</Text>
         <TouchableOpacity 
         style={styles.button}
-        onPress={() => navigation.navigate('Alamat')}
+        onPress={() => navigation.navigate('Alamat', {Toko:NamaToko, Domain:NamaDomain})}
         >
           <Text style={{
             fontSize: 18,

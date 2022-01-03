@@ -46,7 +46,7 @@ const DaftarProduk = ({navigation}) => {
                         <Text style={styles.textStok}>Stok {item.stok}</Text>
                     </View>
                     <View>
-                        <Image source={{uri:item.foto_produk}} style={styles.gambar}/>
+                        <Image source={{uri:`${item.foto_produk}`}} style={styles.gambar}/>
                     </View>
                     <View>
                         <Text style={styles.nama}>{item.nama_produk}</Text>

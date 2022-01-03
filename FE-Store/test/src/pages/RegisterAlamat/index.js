@@ -2,18 +2,37 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import BackArrow from '../../assets/arrow.svg';
 import { Picker } from '@react-native-picker/picker';
+import axios from 'axios';
 
-const RegisterAlamat = ({navigation}) => {
+const RegisterAlamat = ({navigation, route}) => {
   const [pilihKota, setPilihKota] = useState();
   const [pilihKecamatan, setPilihKecamatan] = useState();
   const [pilihKodePos, setPilihKodePos] = useState();
+
+  const submit = () => {
+    const data = {
+      nama_toko: route.params.Toko,
+      nama_domain: route.params.Domain,
+      nama_kota: pilihKota,
+      nama_kecamatan: pilihKecamatan,
+      kodepos_toko: pilihKodePos,
+    }
+    console.log('data before send: ', data);
+    axios.post('http://192.168.1.8:8080/stores', data)
+    .then(res =>{
+      console.log('resp: ', res)
+      navigation.navigate('Splash')
+    })
+    .catch(error => console.log('error', error))
+  }
+
   return (
     <View style={styles.background}>
       <TouchableOpacity 
       onPress={() => navigation.navigate('Biodata')}>
         <BackArrow width={35} height={35} style={styles.backarrow}/>
       </TouchableOpacity>
-      <Text style={styles.judul}>Masukkan Alamat Toko</Text>
+      <Text style={styles.judul}>Masukkan Alamat Toko{route.params.Toko}{route.params.Domain}</Text>
         <View style={styles.pickerView}>
           <Picker style={styles.pickerTop}
             mode="dropdown"
@@ -25,15 +44,15 @@ const RegisterAlamat = ({navigation}) => {
               fontSize: 20,
               }} 
               label="Nama Kota" value="kota"/>
-            <Picker.item label="Bandung" value="bdg"/>
-            <Picker.item label="Kab. Bandung" value="kbdg"/>
-            <Picker.item label="Jakarta Pusat" value="jktp"/>
-            <Picker.item label="Jakarta Utara" value="jktu"/>
-            <Picker.item label="Jakarta Selatan" value="jkts"/>
-            <Picker.item label="Jakarta Barat" value="jktb"/>
-            <Picker.item label="Jakarta Timur" value="jktt"/>
-            <Picker.item label="Garut" value="grt"/>
-            <Picker.item label="Semarang" value="smr"/>
+            <Picker.item label="Bandung" value="Bandung"/>
+            <Picker.item label="Kab. Bandung" value="Kab. Bandung"/>
+            <Picker.item label="Jakarta Pusat" value="Jakarta Pusat"/>
+            <Picker.item label="Jakarta Utara" value="Jakarta Utara"/>
+            <Picker.item label="Jakarta Selatan" value="Jakarta Selatan"/>
+            <Picker.item label="Jakarta Barat" value="Jakarta Barat"/>
+            <Picker.item label="Jakarta Timur" value="Jakarta Timur"/>
+            <Picker.item label="Garut" value="Garut"/>
+            <Picker.item label="Semarang" value="Semarang"/>
           </Picker>
         </View>
         <View style={styles.pickerView}>
@@ -47,15 +66,15 @@ const RegisterAlamat = ({navigation}) => {
               fontSize: 20,
               }} 
               label="Nama Kecamatan" value="kecamatan"/>
-            <Picker.item label="Cempaka Putih" value="CP"/>
-            <Picker.item label="Gambir" value="Ga"/>
-            <Picker.item label="Kemayoran" value="Ke"/>
-            <Picker.item label="Menteng" value="Me"/>
-            <Picker.item label="Kelapa Gading" value="KG"/>
-            <Picker.item label="Kebon Jeruk" value="KJ"/>
-            <Picker.item label="Geger Kalong" value="GK"/>
-            <Picker.item label="Ciwaruga" value="Cw"/>
-            <Picker.item label="Soreang" value="So"/>
+            <Picker.item label="Cempaka Putih" value="Cempaka Putih"/>
+            <Picker.item label="Gambir" value="Gambir"/>
+            <Picker.item label="Kemayoran" value="Kemayoran"/>
+            <Picker.item label="Menteng" value="Menteng"/>
+            <Picker.item label="Kelapa Gading" value="Kelapa Gading"/>
+            <Picker.item label="Kebon Jeruk" value="Kebon Jeruk"/>
+            <Picker.item label="Geger Kalong" value="Geger Kalong"/>
+            <Picker.item label="Ciwaruga" value="Ciwaruga"/>
+            <Picker.item label="Soreang" value="Soreang"/>
           </Picker>
         </View>
         <View style={styles.pickerView}>
@@ -69,20 +88,20 @@ const RegisterAlamat = ({navigation}) => {
               fontSize: 20,
               }} 
               label="Kode Pos" value="pos"/>
-            <Picker.item label="40911" value="s1"/>
-            <Picker.item label="40912" value="s2"/>
-            <Picker.item label="40913" value="s3"/>
-            <Picker.item label="40914" value="s4"/>
-            <Picker.item label="40915" value="s5"/>
-            <Picker.item label="40916" value="s6"/>
-            <Picker.item label="40917" value="s7"/>
-            <Picker.item label="40918" value="s8"/>
-            <Picker.item label="40919" value="s9"/>
+            <Picker.item label="40911" value="40911"/>
+            <Picker.item label="40912" value="40912"/>
+            <Picker.item label="40913" value="40913"/>
+            <Picker.item label="40914" value="40914"/>
+            <Picker.item label="40915" value="40915"/>
+            <Picker.item label="40916" value="40916"/>
+            <Picker.item label="40917" value="40917"/>
+            <Picker.item label="40918" value="40918"/>
+            <Picker.item label="40919" value="40919"/>
           </Picker>
         </View>
           <TouchableOpacity 
         style={styles.button2}
-        onPress={() => navigation.navigate('Splash')}
+        onPress={() => navigation.navigate('Splash'), submit}
         >
           <Text style={{
             fontSize: 18,

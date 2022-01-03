@@ -1,29 +1,67 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, ScrollView, Image, TextInput } from 'react-native';
+import { View, TouchableOpacity, Pressable, StyleSheet, Text, ScrollView, Image, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const TambahProduk = ({navigation}) => {
   const [pilihKategori, setPilihKategori] = useState();
+  const [FotoProduk, setFotoProduk] = useState(null);
+  const [NamaProduk, setNamaProduk] = useState("");
+  const [DeskripsiProduk, setDeskripsiProduk] = useState("");
+  const [HargaProduk, setHargaProduk] = useState("");
+  const [StockProduk, setStockProduk] = useState("");
+  const [Ukuran, setUkuran] = useState("");
+  const [Warna, setWarna] = useState("");
+
+  const openGallery = () =>{
+      const option ={
+        mediaType : 'photo',
+        qualitUkuran : 1
+      }
+
+  launchImageLibrary(option, (res)=>{
+        if(res.didCancel){
+          console.log('User cancelled image picker')
+        }else if(res.errorCode){
+         
+          console.log(res.errorMessage)
+        }else{
+          const data = res.assets[0]
+          setFotoProduk(data.uri)
+          console.log(data)
+        }
+      })
+    }
+
   return(
     <ScrollView style={styles.background}>
       <View style={styles.container}>
         <View flexDirection='row' justifyContent='space-between'>
           <Text style={styles.topTitle}>Foto Produk </Text>
-          <TouchableOpacity>
+          <Pressable onPress={openGallery}>
             <Text style={{
               fontSize: 14, 
               fontWeight: 'bold',
               color: "#0C8EFF"
             }}>Tambah Foto</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
-        <Image source={require('../../assets/photo.jpg')} style={styles.picture}/>
+        {
+          FotoProduk == null &&
+          <Image source={require('../../assets/photo.jpg')} style={styles.picture}/>
+        }
+        {
+          FotoProduk != null &&
+          <Image source={{uri:FotoProduk}} style={styles.picture}/>
+        }
         <Text style={{fontSize:12}}>Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 700 x 700 px).</Text>
         
         {/* Detail produk */}
 
         <Text style={styles.Title}>Detail Produk</Text>
         <TextInput 
+          value={NamaProduk}
+          onChangeText={setNamaProduk}
           style={styles.input}
           placeholder="Nama Produk                                     "
         />
@@ -47,6 +85,8 @@ const TambahProduk = ({navigation}) => {
         </View>
         <View style={{marginVertical: 10}}/>
         <TextInput 
+          value={DeskripsiProduk}
+          onChangeText={setDeskripsiProduk}
           style={styles.input}
           multiline
           editable
@@ -69,12 +109,16 @@ const TambahProduk = ({navigation}) => {
             color: 'black'
           }}>Rp</Text>
           <TextInput
+            value={HargaProduk}
+            onChangeText={setHargaProduk}
             style={{marginTop:5}}
             placeholder="                                                                                    "
           />
         </View>
         <Text style={styles.TitleHarga}>Stock</Text>
         <TextInput 
+          value={StockProduk}
+          onChangeText={setStockProduk}
           style={styles.inputHarga}
           placeholder="                                                                         "
         />
@@ -84,10 +128,14 @@ const TambahProduk = ({navigation}) => {
         <Text style={styles.TitleHarga}>Variant Produk</Text>
         <View flexDirection='row'>
           <TextInput 
+          value={Ukuran}
+          onChangeText={setUkuran}
           style={styles.inputVariant}
           placeholder="ukuran"
           />
           <TextInput 
+          value={Warna}
+          onChangeText={setWarna}
           style={styles.inputVariant}
           placeholder="Warna                          "
           />
