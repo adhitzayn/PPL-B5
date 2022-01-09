@@ -2,16 +2,37 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Pressable, StyleSheet, Text, ScrollView, Image, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import axios from 'axios';
 
 const TambahProduk = ({navigation}) => {
   const [pilihKategori, setPilihKategori] = useState();
-  const [FotoProduk, setFotoProduk] = useState(null);
+  const [FotoProduk, setFotoProduk] = useState("");
   const [NamaProduk, setNamaProduk] = useState("");
   const [DeskripsiProduk, setDeskripsiProduk] = useState("");
-  const [HargaProduk, setHargaProduk] = useState("");
-  const [StockProduk, setStockProduk] = useState("");
+  const [HargaProduk, setHargaProduk] = useState();
+  const [StockProduk, setStockProduk] = useState();
   const [Ukuran, setUkuran] = useState("");
   const [Warna, setWarna] = useState("");
+
+const submitProduk = () => {
+    const data = {
+      nama_produk: NamaProduk,
+      deskripsi_produk: DeskripsiProduk,
+      stok: StockProduk,
+      harga_produk: HargaProduk,
+      foto_produk: FotoProduk,
+      ukuran: Ukuran,
+      warna: Warna,
+    }
+    console.log('data before send: ', data);
+    // axios.post('http://192.168.1.8:8080/stores', data)
+    axios.post('http://192.168.100.189:8080/products', data)
+    .then(res =>{
+      console.log('resp: ', res)
+      navigation.navigate('Store')
+    })
+    .catch(error => console.log('error', error))
+  }
 
   const openGallery = () =>{
       const option ={
@@ -47,11 +68,11 @@ const TambahProduk = ({navigation}) => {
           </Pressable>
         </View>
         {
-          FotoProduk == null &&
+          FotoProduk == "" &&
           <Image source={require('../../assets/photo.jpg')} style={styles.picture}/>
         }
         {
-          FotoProduk != null &&
+          FotoProduk != "" &&
           <Image source={{uri:FotoProduk}} style={styles.picture}/>
         }
         <Text style={{fontSize:12}}>Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 700 x 700 px).</Text>
@@ -188,6 +209,7 @@ const TambahProduk = ({navigation}) => {
         </View>
         <TouchableOpacity 
         style={styles.button}
+        onPress={() =>  navigation.navigate('Store'),submitProduk}
         
         >
           <Text style={{
@@ -195,7 +217,7 @@ const TambahProduk = ({navigation}) => {
             color: "white",
             alignSelf: 'center'
             
-          }}>Simpan</Text>
+          }}>Tambahkan</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

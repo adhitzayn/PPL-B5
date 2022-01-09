@@ -13,7 +13,7 @@ const RegisterBiodata = ({navigation}) => {
     </TouchableOpacity>
       <Text style={styles.judul}>Masukkan Nama Toko dan Domain</Text>
         <View style={styles.input}>
-          <TextInput 
+          <TextInput
             value={NamaToko}
             onChangeText={setNamaToko}
             style={{ 

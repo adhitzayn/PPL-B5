@@ -16,11 +16,11 @@ const Router = () => {
             <Stack.Screen name="Store" component={Store} 
                 options={({navigation}) => ({ 
                     headerTitle: 'Toko Saya',
-                    headerRight: () => (
-                        <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
-                            <PenButton width={30} height={30}/>
-                        </TouchableOpacity>
-                        ),
+                    // headerRight: () => (
+                    //     <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+                    //         <PenButton width={30} height={30}/>
+                    //     </TouchableOpacity>
+                    //     ),
                         })}
                         />
             <Stack.Screen name="Edit" component={EditStoreProfile} 

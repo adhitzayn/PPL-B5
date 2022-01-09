@@ -3,6 +3,7 @@ import { ScrollView, View, Text, StyleSheet, TouchableOpacity} from 'react-nativ
 import BackArrow from '../../assets/arrow.svg';
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
+import RegisterBiodata from '../';
 
 const RegisterAlamat = ({navigation, route}) => {
   const [pilihKota, setPilihKota] = useState();
@@ -18,10 +19,11 @@ const RegisterAlamat = ({navigation, route}) => {
       kodepos_toko: pilihKodePos,
     }
     console.log('data before send: ', data);
-    axios.post('http://192.168.1.8:8080/stores', data)
+    // axios.post('http://192.168.1.8:8080/stores', data)
+    axios.post('http://192.168.100.189:8080/stores', data)
     .then(res =>{
       console.log('resp: ', res)
-      navigation.navigate('Splash')
+      navigation.navigate('Splash', {Domain:route.params.Domain})
     })
     .catch(error => console.log('error', error))
   }
@@ -101,7 +103,7 @@ const RegisterAlamat = ({navigation, route}) => {
         </View>
           <TouchableOpacity 
         style={styles.button2}
-        onPress={() => navigation.navigate('Splash'), submit}
+        onPress={() =>  navigation.navigate('Splash', {Domain:route.params.Domain}),submit}
         >
           <Text style={{
             fontSize: 18,
@@ -112,6 +114,8 @@ const RegisterAlamat = ({navigation, route}) => {
     </View>
   );
 };
+
+// navigation.navigate('Splash', {Toko:route.params.Toko})
 
 const styles = StyleSheet.create({
   background: {

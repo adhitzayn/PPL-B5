@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, ImageBackground} from 'react-native';
 
-const SplashSuccess = ({navigation}) => {
+const SplashSuccess = ({navigation, route}) => {
     useEffect(() => {
         setTimeout(() => {
-            navigation.replace('Store');
+            navigation.replace('Store' ,{Domain:route.params.Domain});
         }, 4000);
     });
     return(
