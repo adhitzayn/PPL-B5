@@ -22,16 +22,16 @@ func main() {
 		router := httprouter.New()
 		router.GET("/stores", transport_stores.GetAllStore)
 		router.GET("/stores/:search", transport_stores.SearchStores)
-		router.POST("/stores", Auth(transport_stores.PostStore))
-		router.PUT("/stores/:id", Auth(transport_stores.UpdateStore))
+		router.POST("/stores", transport_stores.PostStore)
+		router.PUT("/stores/:id", transport_stores.UpdateStore)
 		router.DELETE("/stores/:id", Auth(transport_stores.DeleteStore))
 		////////////////////////////////////////////////////
 
 		//products
 		router.GET("/products", transport_products.GetAllProducts)
 		router.GET("/products/:search", transport_products.SearchProducts)
-		router.POST("/products", Auth(transport_products.PostProducts))
-		router.PUT("/products/:id", Auth(transport_products.UpdateProducts))
+		router.POST("/products", transport_products.PostProducts)
+		router.PUT("/products/:id", transport_products.UpdateProducts)
 		router.DELETE("/products/:id", Auth(transport_products.DeleteProducts))
 		////////////////////////////////////////////////////
 
