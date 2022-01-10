@@ -100,7 +100,7 @@ const EditStoreProfile = ({navigation, route}) => {
                       fontSize: 13,
                       marginTop:5,
                       marginBottom: 5
-                  }}>Besar file maks. 2 MB dengan format .JPG, JPEG atau PNG</Text>
+                  }}>Format foto berupa .JPG, JPEG atau PNG</Text>
                   <Pressable
                     onPress={openGallery}
                   >
@@ -127,8 +127,8 @@ const EditStoreProfile = ({navigation, route}) => {
             />
           </View>
           <View style={styles.input}>
-            <Text style={{marginStart: 5, fontSize:14}}>Nama Domain</Text>
-            <TextInput 
+            <Text style={{marginStart: 5, fontSize:14}}>Nama Toko</Text>
+            <TextInput
               value={NamaDomain}
               onChangeText={setNamaDomain}
               style={{ 
@@ -137,7 +137,7 @@ const EditStoreProfile = ({navigation, route}) => {
               placeholder={item.nama_domain}
             />
           </View>
-          <View style={styles.border}/>
+          
 
         {/* Deskripsi Toko */}
 

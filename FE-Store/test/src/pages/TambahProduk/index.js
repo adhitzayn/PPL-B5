@@ -130,6 +130,7 @@ const submitProduk = () => {
             color: 'black'
           }}>Rp</Text>
           <TextInput
+            keyboardType='numeric'
             value={HargaProduk}
             onChangeText={setHargaProduk}
             style={{marginTop:5}}
@@ -138,6 +139,7 @@ const submitProduk = () => {
         </View>
         <Text style={styles.TitleHarga}>Stock</Text>
         <TextInput 
+          keyboardType='numeric'
           value={StockProduk}
           onChangeText={setStockProduk}
           style={styles.inputHarga}
@@ -165,48 +167,7 @@ const submitProduk = () => {
           placeholder="Stock              "
           />
         </View>
-        <View flexDirection='row'>
-          <TextInput 
-          style={styles.inputVariant}
-          placeholder="ukuran"
-          />
-          <TextInput 
-          style={styles.inputVariant}
-          placeholder="Warna                          "
-          />
-          <TextInput 
-          style={styles.inputStock}
-          placeholder="Stock              "
-          />
-        </View>
-        <View flexDirection='row'>
-          <TextInput 
-          style={styles.inputVariant}
-          placeholder="ukuran"
-          />
-          <TextInput 
-          style={styles.inputVariant}
-          placeholder="Warna                          "
-          />
-          <TextInput 
-          style={styles.inputStock}
-          placeholder="Stock              "
-          />
-        </View>
-        <View flexDirection='row'>
-          <TextInput 
-          style={styles.inputVariant}
-          placeholder="ukuran"
-          />
-          <TextInput 
-          style={styles.inputVariant}
-          placeholder="Warna                          "
-          />
-          <TextInput 
-          style={styles.inputStock}
-          placeholder="Stock              "
-          />
-        </View>
+        
         <TouchableOpacity 
         style={styles.button}
         onPress={() =>  navigation.navigate('Store'),submitProduk}

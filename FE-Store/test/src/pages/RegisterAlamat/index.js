@@ -34,7 +34,7 @@ const RegisterAlamat = ({navigation, route}) => {
       onPress={() => navigation.navigate('Biodata')}>
         <BackArrow width={35} height={35} style={styles.backarrow}/>
       </TouchableOpacity>
-      <Text style={styles.judul}>Masukkan Alamat Toko{route.params.Toko}{route.params.Domain}</Text>
+      <Text style={styles.judul}>Masukkan Alamat Toko</Text>
         <View style={styles.pickerView}>
           <Picker style={styles.pickerTop}
             mode="dropdown"

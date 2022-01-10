@@ -7,7 +7,7 @@ import PenButton from '../../assets/Pen.svg';
 
 const Store = ({navigation, route}) => {
   const[data, setData] = useState([])
- 
+  
   // const {
   //       deskripsi_toko, 
   //       foto_toko, 
@@ -26,10 +26,11 @@ const Store = ({navigation, route}) => {
   }, []);
 
   
-
+ 
   const getDataStore = () => {
     // axios.get(`http://192.168.1.8:8080/stores/${route.params.Domain}`)
     axios.get(`http://192.168.100.189:8080/stores/${route.params.Domain}`)
+    
     
     .then(res => {
       // const dataStore= res.data[0]
